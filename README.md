@@ -60,6 +60,10 @@ tf = threadfix.ThreadFixAPI(host, api_key, verify_ssl=False)
 
 #### Teams
 
+- [List Teams: `list_teams`](#list-teams-list_teams)
+- [Get Team: `get_team`](#)
+- [Get Team By Name: `get_team_by_name`](#)
+
 ##### List Teams: `list_teams`
 
 Retrieves all the teams.
@@ -68,7 +72,7 @@ Retrieves all the teams.
 
 _None_
 
-###### Example 
+###### Example
 
 ```python
 tf = threadfix.ThreadFixAPI(host, api_key)
@@ -85,44 +89,47 @@ Creates a team with the given name.
 | ---------- | -------- | ------- | ----------- | ------ |
 | name       | **Yes**  | N/A     | The name of the new team that is being created. | N/A |
 
-###### Example 
+###### Example
 
 ```python
 tf = threadfix.ThreadFixAPI(host, api_key)
 response = tf.create_team('Example Team')
 ```
 
-##### Get Team `get_team`
-##### Get Team By Name `get_team_by_name`
+##### Get Team: `get_team`
+##### Get Team By Name: `get_team_by_name`
 
 #### Applications
 
-##### Create Application
-##### Get Application
-##### Get Application By Name
-##### Set Application Parameters
-##### Set Application URL
-##### Set Application WAF
+- [Create Application: `create_application`](#create-application)
+- [](#)
+
+##### Create Application: ``
+##### Get Application: ``
+##### Get Application By Name: ``
+##### Set Application Parameters: ``
+##### Set Application URL: ``
+##### Set Application WAF: ``
 
 #### Findings
 
-##### Create Manual Finding
-##### Create Static Finding
-##### Upload Scan
+##### Create Manual Finding: ``
+##### Create Static Finding: ``
+##### Upload Scan: ``
 
 #### WAFs
 
-##### List WAFs
-##### Create WAF
-##### Get WAF
-##### Get WAF By Name
-##### Get WAF Rules
-##### Get WAF Rules By Application
-##### Upload WAF Log
+##### List WAFs: ``
+##### Create WAF: ``
+##### Get WAF: ``
+##### Get WAF By Name: ``
+##### Get WAF Rules: ``
+##### Get WAF Rules By Application: ``
+##### Upload WAF Log: ``
 
 #### Vulnerabilities
 
-##### Get Vulnerabilities
+##### Get Vulnerabilities: ``
 
 ## Bugs and Feature Requests
 
