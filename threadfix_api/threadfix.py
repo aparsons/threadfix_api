@@ -164,7 +164,7 @@ class ThreadFixAPI(object):
         :param native_id: Specific identifier for vulnerability.
         :param column: Column number for finding vulnerability source.
         :param line_text: Specific line text to finding vulnerability.
-        :param line_number: Specific source line number to find vulnerability.
+        :param line_number: Specific source line number to finding vulnerability.
         """
 
         if not parameter and not file_path:
@@ -190,7 +190,7 @@ class ThreadFixAPI(object):
 
     def upload_scan(self, application_id, file_path):
         """
-        Uploads and processes the scan.
+        Uploads and processes a scan file.
         :param application_id: Application identifier.
         :param file_path: Path to the scan file to be uploaded.
         """
