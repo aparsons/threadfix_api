@@ -8,9 +8,9 @@ Quick Start
 
 Several quick start options are available:
 
-- Install with pip (recommended): :samp:`pip install threadfix_api`
+- Install with pip (recommended): :code:`pip install threadfix_api`
 - `Download the latest release <https://github.com/aparsons/threadfix_api/releases/latest>`_
-- Clone the repository: :samp:`git clone https://github.com/aparsons/threadfix_api.git`
+- Clone the repository: :code:`git clone https://github.com/aparsons/threadfix_api.git`
 
 Example
 -------
@@ -35,7 +35,7 @@ Example
 Bugs and Feature Requests
 -------------------------
 
-Have a bug or a feature request? Please first search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/aparsons/threadfix_api/issues/new).
+Have a bug or a feature request? Please first search for existing and closed issues. If your problem or idea is not addressed yet, `please open a new issue <https://github.com/aparsons/threadfix_api/issues/new>`_.
 
 Copyright and License
 ---------------------
