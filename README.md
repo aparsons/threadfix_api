@@ -10,6 +10,15 @@ Several quick start options are available:
 - Clone the repository: `git clone https://github.com/aparsons/threadfix_api.git`
 - Install with pip (recommended): `pip install threadfix_api`
 
+## Bugs and Feature Requests
+
+Have a bug or a feature request? Please first search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/aparsons/threadfix_api/issues/new).
+
+## Copyright and License
+
+- Copyright 2015 [Adam Parsons](https://github.com/aparsons)
+- [Licensed under MIT](https://github.com/aparsons/threadfix_api/blob/master/LICENSE.txt).
+
 ## How to Use
 
 ### Example
@@ -45,6 +54,12 @@ teams = tf.list_teams()
 if teams.success:  # Was the request a success?
   # Everything worked fine, lets view the response data
   print(teams.data)
+
+  # If we want to print valid json
+  print(teams.data_json())
+
+  # Fancy indented json
+  print(teams.data_json(pretty=True))
 else:
   # Print the reason why the request was not a success
   print(teams.message)
@@ -58,11 +73,44 @@ from threadfix_api import threadfix
 tf = threadfix.ThreadFixAPI(host, api_key, verify_ssl=False)
 ```
 
-#### Teams
+#### Table of Contents
+
+[Teams](#teams)
 
 - [List Teams: `list_teams`](#list-teams-list_teams)
 - [Get Team: `get_team`](##get-team-get_team)
 - [Get Team By Name: `get_team_by_name`](#get-team-by-name-get_team_by_name)
+
+[Applications](#applications)
+
+- [Create Application: `create_application`](#create-application-create_application)
+- [Get Application: `get_application`](#get-application-get_application)
+- [Get Application By Name: `get_application_by_name`](#get-application-by-name-get_application_by_name)
+- [Set Application Parameters: `set_application_parameters`](#set-application-parameters-set_application_parameters)
+- [Set Application URL: `set_application_url`](#set-application-url-set_application_url)
+- [Set Application WAF: `set_application_waf`](#set-application-waf-set_application_waf)
+
+[Findings](#findings)
+
+- [Create Manual Finding: `create_manual_finding`](#create-manual-finding-create_manual_finding)
+- [Create Static Finding: `create_static_finding`](#create-static-finding-create_static_finding)
+- [Upload Scan: `upload_scan`](#upload-scan-upload_scan)
+
+[WAFs](#wafs)
+
+- [List WAFs: `list_wafs`](#list-wafs-list_wafs)
+- [Create WAF: `create_waf`](#create-waf-create_waf)
+- [Get WAF: `get_waf`](#get-waf-get_waf)
+- [Get WAF By Name: `get_waf_by_name`](#get-waf-by-name-get_waf_by_name)
+- [Get WAF Rules: `get_waf_rules`](#get-waf-rules-get_waf_rules)
+- [Get WAF Rules By Application: `get_waf_rules_by_application`](#get-waf-rules-by-application-get_waf_rules_by_application)
+- [Upload WAF Log: `upload_waf_log`](#upload-waf-log-upload_waf_log)
+
+[Vulnerabilities](#vulnerabilities)
+
+- [Get Vulnerabilities: `get_vulnerabilities`](#get-vulnerabilities-get_vulnerabilities)
+
+#### Teams
 
 ##### List Teams: `list_teams`
 
@@ -524,12 +572,3 @@ tf = threadfix.ThreadFixAPI(host, api_key)
 # Get vulnerabilities for specific applications
 response = tf.get_vulnerabilities(applications=[4, 8, 15, 16, 23, 42])
 ```
-
-## Bugs and Feature Requests
-
-Have a bug or a feature request? Please first search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/aparsons/threadfix_api/issues/new).
-
-## Copyright and License
-
-- Copyright 2015 [Adam Parsons](https://github.com/aparsons)
-- [Licensed under MIT](https://github.com/aparsons/threadfix_api/blob/master/LICENSE.txt).
