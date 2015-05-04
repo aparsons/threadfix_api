@@ -9,13 +9,22 @@ from . import __version__ as version
 class ThreadFixAPI(object):
     """An API wrapper to facilitate interactions to and from ThreadFix."""
 
-    def __init__(self, host, api_key, verify_ssl=True, timeout=30, debug=False):
-        """Initialize a ThreadFix API instance."""
+    def __init__(self, host, api_key, verify_ssl=True, timeout=30, user_agent=None, debug=False):
+        """
+        Initialize a ThreadFix API instance.
+        :param host: The URL for the ThreadFix server. (e.g., http://localhost:8080/threadfix/)
+        :param api_key: The API key generated on the ThreadFix API Key page.
+        :param verify_ssl: Specify if API requests will verify the host's SSL certificate.
+        :param timeout: HTTP timeout in seconds, default is 25.
+        :param user_agent: HTTP user agent string, default is "threadfix_api/[version]".
+        :param debug: Prints requests and responses, useful for debugging.
+        """
 
         self.host = host
         self.api_key = api_key
         self.verify_ssl = verify_ssl
         self.timeout = timeout
+        self.user_agent = user_agent
         self.debug = debug  # Prints request and response information.
 
         if not self.verify_ssl:
