@@ -24,7 +24,12 @@ class ThreadFixAPI(object):
         self.api_key = api_key
         self.verify_ssl = verify_ssl
         self.timeout = timeout
-        self.user_agent = user_agent
+
+        if not user_agent:
+            self.user_agent = 'threadfix_api/' + version
+        else:
+            self.user_agent = user_agent
+
         self.debug = debug  # Prints request and response information.
 
         if not self.verify_ssl:
@@ -282,7 +287,7 @@ class ThreadFixAPI(object):
         params['apiKey'] = self.api_key
 
         headers = {
-            'User-Agent': 'threadfix_api/' + version,
+            'User-Agent': self.user_agent,
             'Accept': 'application/json'
         }
 
