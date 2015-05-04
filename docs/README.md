@@ -23,12 +23,17 @@ else:
   print(teams.message)
 ```
 
-If you are using a **self-signed certificate**, you can disable certificate verification when you instantiate the API wrapper. If disabled, API requests could be intercepted by third-parties -- use with caution.
+If you are using a **self-signed certificate**, you can disable certificate verification when you instantiate the API wrapper. If disabled, API requests could be intercepted by third-parties -- use with caution. Option verify_ssl only applies to host certs.
 
 ```python
-from threadfix_api import threadfix
-
 tf = threadfix.ThreadFixAPI(host, api_key, verify_ssl=False)
+```
+
+You can also specify a local cert to use as client side certificate, as a single file (containing the private key and the certificate) or as a tuple of both file’s path:
+
+```python
+cert=('/path/server.crt', '/path/key')
+tf = threadfix.ThreadFixAPI(host, api_key, cert=cert)
 ```
 
 ## Table of Contents

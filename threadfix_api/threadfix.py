@@ -9,14 +9,16 @@ from . import __version__ as version
 class ThreadFixAPI(object):
     """An API wrapper to facilitate interactions to and from ThreadFix."""
 
-    def __init__(self, host, api_key, verify_ssl=True, timeout=30, user_agent=None, debug=False):
+    def __init__(self, host, api_key, verify_ssl=True, timeout=30, user_agent=None, cert=None, debug=False):
         """
         Initialize a ThreadFix API instance.
         :param host: The URL for the ThreadFix server. (e.g., http://localhost:8080/threadfix/)
         :param api_key: The API key generated on the ThreadFix API Key page.
-        :param verify_ssl: Specify if API requests will verify the host's SSL certificate.
+        :param verify_ssl: Specify if API requests will verify the host's SSL certificate, defaults to true.
         :param timeout: HTTP timeout in seconds, default is 25.
         :param user_agent: HTTP user agent string, default is "threadfix_api/[version]".
+        :param cert: You can also specify a local cert to use as client side certificate, as a single file (containing
+        the private key and the certificate) or as a tuple of both file’s path
         :param debug: Prints requests and responses, useful for debugging.
         """
 
@@ -30,6 +32,7 @@ class ThreadFixAPI(object):
         else:
             self.user_agent = user_agent
 
+        self.cert = cert
         self.debug = debug  # Prints request and response information.
 
         if not self.verify_ssl:
@@ -362,7 +365,7 @@ class ThreadFixAPI(object):
                 print(params)
 
             response = requests.request(method=method, url=self.host + url, params=params, files=files, headers=headers,
-                                        timeout=self.timeout, verify=self.verify_ssl)
+                                        timeout=self.timeout, verify=self.verify_ssl, cert=self.cert)
 
             if self.debug:
                 print(response.status_code)

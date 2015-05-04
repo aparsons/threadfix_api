@@ -3,6 +3,8 @@ ThreadFix API
 
 A Python API wrapper to facilitate interactions with `ThreadFix <https://github.com/denimgroup/threadfix>`_.
 
+This package implements all API functionality available within ThreadFix 2.2.2 (Apr 30).
+
 Quick Start
 -----------
 
@@ -22,15 +24,30 @@ Example
 
     # setup threadfix connection information
     host = 'http://localhost:8080/threadfix/'
-    api_key = 'YourAPIKeyFromThreadFix'
+    api_key = 'your_api_key_from_threadfix'
 
-    # instantiate this threadfix api wrapper
+    # instantiate the threadfix api wrapper
     tf = threadfix.ThreadFixAPI(host, api_key)
+
+    # If you need to disable certificate verification, set verify_ssl to False.
+    # tf = threadfix.ThreadFixAPI(host, api_key, verify_ssl=False)
+
+    # You can also specify a local cert to use as client side certificate, as a single file (containing the private key
+    # and the certificate) or as a tuple of both file’s path.
+    # cert=('/path/server.crt', '/path/key')
+    # tf = threadfix.ThreadFixAPI(host, api_key, cert=cert)
 
     # rock and roll
     teams = tf.list_teams()
     if teams.success:
-      print(teams.data)
+        print(teams.data)  # Decoded JSON object
+
+        for team in teams.data:
+            print(team['name'])  # Print the name of each team
+    else:
+        print('Uh Oh! ' + teams.message)
+
+Supporting information for each method available can be found in the `documentation <https://github.com/aparsons/threadfix_api/tree/master/docs>`_.
 
 Bugs and Feature Requests
 -------------------------

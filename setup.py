@@ -10,7 +10,7 @@ except ImportError:
 
 from threadfix_api import __version__ as version
 
-with open('README.rst', 'r', 'utf-8') as f:
+with open('README.rst', 'r') as f:
     readme = f.read()
 
 # Publish helper
