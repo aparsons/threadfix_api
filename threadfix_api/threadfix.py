@@ -42,32 +42,62 @@ class ThreadFixAPI(object):
         return self._request('GET', 'rest/teams')
 
     def create_team(self, name):
-        """Creates a team with the given name."""
+        """
+        Creates a team with the given name.
+        :param name: The name of the new team that is being created.
+        """
         return self._request('POST', '/rest/teams/new', {'name': name})
 
     def get_team(self, team_id):
-        """Retrieves a team using the given team id."""
+        """
+        Retrieves a team using the given team id.
+        :param team_id: Team identification.
+        """
         return self._request('GET', '/rest/teams/' + str(team_id))
 
     def get_team_by_name(self, name):
-        """Retrieves a team using the given name."""
+        """
+        Retrieves a team using the given name.
+        :param name: The name of the team to be retrieved.
+        """
         return self._request('GET', 'rest/teams/lookup?name=' + str(name))
 
     # Application
 
     def create_application(self, team_id, name, url=None):
-        """Creates an application under the given team with id of team id."""
+        """
+        Creates an application under the given team with id of team id.
+        :param team_id: Team identifier.
+        :param name: The name of the new application that is being created.
+        :param url: The url of where the application being assessed lives.
+        """
         params = {'name': name}
         if url:
             params['url'] = url
         return self._request('POST', 'rest/teams/' + str(team_id) + '/applications/new', params)
 
     def get_application(self, application_id):
-        """Retrieves an application using the given application id."""
+        """
+        Retrieves an application using the given application id.
+        :param application_id: Application identifier.
+        """
         return self._request('GET', 'rest/applications/' + str(application_id))
 
+    def get_application_by_name(self, team_name, application_name):
+        """
+        Retrieves an application using the given team name and application name.
+        :param team_name: The name of the team of the application to be retrieved.
+        :param application_name: The name of the application to be retrieved.
+        """
+        return self._request('GET', 'rest/applications/' + str(team_name) + '/lookup?name=' + str(application_name))
+
     def set_application_parameters(self, application_id, framework_type, repository_url):
-        """Sets parameters for the Hybrid Analysis Mapping ThreadFix functionality."""
+        """
+        Sets parameters for the Hybrid Analysis Mapping ThreadFix functionality.
+        :param application_id: Application identifier.
+        :param framework_type: The web framework the app was built on. ('None', 'DETECT', 'JSP', 'SPRING_MVC')
+        :param repository_url: The git repository where the source code for the application can be found.
+        """
         params = {
             'frameworkType': framework_type,
             'repositoryUrl': repository_url
@@ -75,11 +105,19 @@ class ThreadFixAPI(object):
         return self._request('POST', 'rest/applications/' + str(application_id) + '/setParameters', params)
 
     def set_application_url(self, application_id, url):
-        """Sets the application's URL."""
+        """
+        Sets the application's URL.
+        :param application_id: Application identifier.
+        :param url: The url you want to assign to the application.
+        """
         return self._request('POST', 'rest/applications/' + str(application_id) + '/addUrl', {'url': url})
 
     def set_application_waf(self, application_id, waf_id):
-        """Sets the application's WAF to the WAF with the specified id."""
+        """
+        Sets the application's WAF to the WAF with the specified id.
+        :param application_id: Application identifier.
+        :param waf_id: WAF identifier.
+        """
         return self._request('POST', 'rest/applications/' + str(application_id) + '/setWaf', {'wafId': waf_id})
 
     # Findings
@@ -88,7 +126,7 @@ class ThreadFixAPI(object):
                               native_id=None, path=None):
         """
         Creates a manual finding with given properties.
-        :param application_id: Application identifier number.
+        :param application_id: Application identification.
         :param vulnerability_type: Name of CWE vulnerability.
         :param description: General description of the issue.
         :param severity: Severity level from 0-8.
@@ -151,7 +189,11 @@ class ThreadFixAPI(object):
         return self._request('POST', 'rest/applications/' + str(application_id) + '/addFinding', params)
 
     def upload_scan(self, application_id, file_path):
-        """Uploads and processes the scan."""
+        """
+        Uploads and processes the scan.
+        :param application_id: Application identifier.
+        :param file_path: Path to the scan file to be uploaded.
+        """
         return self._request(
             'POST', 'rest/applications/' + str(application_id) + '/upload',
             files={'file': open(file_path, 'rb')}
@@ -164,7 +206,11 @@ class ThreadFixAPI(object):
         return self._request('GET', 'rest/wafs')
 
     def create_waf(self, name, waf_type):
-        """Creates a WAF with the given type."""
+        """
+        Creates a WAF with the given type.
+        :param name: Name of the WAF.
+        :param waf_type: WAF type. ('mod_security', 'Snort', 'Imperva SecureSphere', 'F5 BigIP ASM', 'DenyAll rWeb')
+        """
         params = {
             'name': name,
             'type': waf_type
@@ -172,22 +218,41 @@ class ThreadFixAPI(object):
         return self._request('POST', 'rest/wafs/new', params)
 
     def get_waf(self, waf_id):
-        """Retrieves WAF using the given WAF id."""
+        """
+        Retrieves WAF using the given WAF id.
+        :param waf_id: WAF identifier.
+        """
         return self._request('GET', 'rest/wafs/' + str(waf_id))
 
+    def get_waf_by_name(self, waf_name):
+        """
+        Retrieves waf using the given name.
+        :param waf_name: Name of the WAF.
+        """
+        return self._request('GET', 'rest/wafs/lookup?name=' + str(waf_name))
+
     def get_waf_rules(self, waf_id):
-        """Retrieves all the rules for WAF with the given WAF id."""
+        """
+        Retrieves all the rules for WAF with the given WAF id.
+        :param waf_id: WAF identifier.
+        """
         return self.get_waf_rules_by_application(waf_id=waf_id, application_id=-1)
 
     def get_waf_rules_by_application(self, waf_id, application_id):
         """
         Returns the WAF rule text for one or all of the applications in a WAF. If the application id is -1, it will get
         rules for all apps. If the application is a valid application id, rules will be generated for that application.
+        :param waf_id: WAF identifier.
+        :param application_id: Application identifier.
         """
         return self._request('GET', 'rest/wafs/' + str(waf_id) + '/rules/app/' + str(application_id))
 
     def upload_waf_log(self, waf_id, file_path):
-        """Uploads and processes a WAF log."""
+        """
+        Uploads and processes a WAF log.
+        :param waf_id: WAF identifier.
+        :param file_path: Path to the WAF log file to be uploaded.
+        """
         return self._request('POST', 'rest/wafs/' + str(waf_id) + '/uploadLog', files={'file': open(file_path, 'rb')})
 
     # Vulnerabilities

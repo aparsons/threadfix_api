@@ -11,7 +11,7 @@ setup(
     author='Adam Parsons',
     author_email='adam@aparsons.net',
     url='https://github.com/aparsons/threadfix_api',
-    download_url='',
+    download_url='https://github.com/aparsons/threadfix_api/tarball/' + version,
     license='MIT',
     install_requires=['requests'],
     keywords=['threadfix', 'api', 'http'],
