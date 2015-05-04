@@ -115,6 +115,7 @@ response = tf.create_team('Example Team')
 ##### List WAFs
 ##### Create WAF
 ##### Get WAF
+##### Get WAF By Name
 ##### Get WAF Rules
 ##### Get WAF Rules By Application
 ##### Upload WAF Log
