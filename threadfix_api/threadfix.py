@@ -68,8 +68,8 @@ class ThreadFixAPI(object):
         """
         Creates an application under a given team.
         :param team_id: Team identifier.
-        :param name: The name of the new application that is being created.
-        :param url: The url of where the application being assessed lives.
+        :param name: The name of the new application being created.
+        :param url: The url of where the application is located.
         """
         params = {'name': name}
         if url:

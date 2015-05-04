@@ -87,7 +87,7 @@ Creates a team with the given name.
 
 | Parameter  | Required | Default | Description | Values |
 | ---------- | -------- | ------- | ----------- | ------ |
-| name       | **Yes**  |         | The name of the new team that is being created. | N/A |
+| name       | **Yes**  |         | The name of the new team that is being created. |  |
 
 ###### Example
 
@@ -101,9 +101,6 @@ response = tf.create_team('Example Team')
 
 #### Applications
 
-- [Create Application: `create_application`](#create-application)
-- [](#)
-
 ##### Create Application: `create_application`
 
 Creates an application under a given team.
@@ -113,42 +110,161 @@ Creates an application under a given team.
 | Parameter  | Required | Default | Description | Values |
 | ---------- | -------- | ------- | ----------- | ------ |
 | team_id    | **Yes**  |         | Team identifier. |  |
-| name       | **Yes**  |         | The name of the new team that is being created. |  |
-| url        | No       |         | The url of where the application being assessed lives. |  |
-
+| name       | **Yes**  |         | The name of the new team being created. |  |
+| url        | No       |         | The url of where application is located. |  |
 
 ###### Example
 
 ```python
 tf = threadfix.ThreadFixAPI(host, api_key)
-response = tf.create_application(team_id=1, name='Example Application', url='http://www.example.com/')
+response = tf.create_application(
+  team_id=1,
+  name='Example Application',
+  url='http://www.example.com/'
+)
 ```
 
 ##### Get Application: `get_application`
+
+Retrieves an application using the given application id.
+
+###### Parameters
+
+| Parameter  | Required | Default | Description | Values |
+| ---------- | -------- | ------- | ----------- | ------ |
+| application_id | **Yes**  |  | Application identifier. |  |
+
+###### Example
+
+```python
+tf = threadfix.ThreadFixAPI(host, api_key)
+response = tf.get_application(1)
+```
+
 ##### Get Application By Name: `get_application_by_name`
+
+Retrieves an application using the given team name and application name.
+
+###### Parameters
+
+| Parameter  | Required | Default | Description | Values |
+| ---------- | -------- | ------- | ----------- | ------ |
+| team_id | **Yes** |  | Team identifier. |  |
+| application_id | **Yes** |  | Application identifier. |  |
+
+###### Example
+
+```python
+tf = threadfix.ThreadFixAPI(host, api_key)
+response = tf.get_application_by_name('Team One', 'Afa Application')
+```
+
 ##### Set Application Parameters: `set_application_parameters`
+
+Sets parameters for the Hybrid Analysis Mapping ThreadFix functionality.
+
+###### Parameters
+
+| Parameter  | Required | Default | Description | Values |
+| ---------- | -------- | ------- | ----------- | ------ |
+| application_id | **Yes** |         | Application identifier. |  |
+| framework_type | **Yes** |  | The web framework the app was built on. | `'None'`, `'DETECT'`, `'JSP'`, `'SPRING_MVC'` |
+| repository_url | **Yes** |  | The git repository where the source code for the application can be found. |  |
+
+###### Example
+
+```python
+tf = threadfix.ThreadFixAPI(host, api_key)
+response = tf.set_application_parameters(
+  application_id=1,
+  framework_type='DETECT',
+  repository_url='http://www.example.com/'
+)
+```
+
 ##### Set Application URL: `set_application_url`
+
+###### Parameters
+
+###### Example
+
 ##### Set Application WAF: `set_application_waf`
+
+###### Parameters
+
+###### Example
 
 #### Findings
 
 ##### Create Manual Finding: `create_manual_finding`
+
+###### Parameters
+
+###### Example
+
 ##### Create Static Finding: `create_static_finding`
+
+###### Parameters
+
+###### Example
+
 ##### Upload Scan: `upload_scan`
+
+###### Parameters
+
+###### Example
 
 #### WAFs
 
 ##### List WAFs: `list_wafs`
+
+###### Parameters
+
+###### Example
+
 ##### Create WAF: `create_waf`
+
+###### Parameters
+
+###### Example
+
 ##### Get WAF: `get_waf`
+
+###### Parameters
+
+###### Example
+
 ##### Get WAF By Name: `get_waf_by_name`
+
+###### Parameters
+
+###### Example
+
 ##### Get WAF Rules: `get_waf_rules`
+
+###### Parameters
+
+###### Example
+
 ##### Get WAF Rules By Application: `get_waf_rules_by_application`
+
+###### Parameters
+
+###### Example
+
 ##### Upload WAF Log: `upload_waf_log`
+
+###### Parameters
+
+###### Example
 
 #### Vulnerabilities
 
 ##### Get Vulnerabilities: `get_vulnerabilities`
+
+###### Parameters
+
+###### Example
 
 ## Bugs and Feature Requests
 
