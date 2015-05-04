@@ -1,6 +1,6 @@
 # ThreadFix API
 
-A Python API wrapper to facilitate interactions to and from [ThreadFix](https://github.com/denimgroup/threadfix).
+A Python API wrapper to facilitate interactions with [ThreadFix](https://github.com/denimgroup/threadfix).
 
 ## Quick Start
 
@@ -81,9 +81,9 @@ Creates a team with the given name.
 
 ###### Parameters
 
-| Parameter  | Required | Default | Description |
-| ---------- | -------- | ------- | ----------- |
-| name       | **Yes**  | N/A     | The name of the new team that is being created. |
+| Parameter  | Required | Default | Description | Values |
+| ---------- | -------- | ------- | ----------- | ------ |
+| name       | **Yes**  | N/A     | The name of the new team that is being created. | N/A |
 
 ###### Example 
 
@@ -92,13 +92,14 @@ tf = threadfix.ThreadFixAPI(host, api_key)
 response = tf.create_team('Example Team')
 ```
 
-##### Get Team
-##### Get Team By Name
+##### Get Team `get_team`
+##### Get Team By Name `get_team_by_name`
 
 #### Applications
 
 ##### Create Application
 ##### Get Application
+##### Get Application By Name
 ##### Set Application Parameters
 ##### Set Application URL
 ##### Set Application WAF
