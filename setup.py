@@ -14,9 +14,16 @@ with open('README.rst', 'r') as f:
     readme = f.read()
 
 # Publish helper
-if sys.argv[-1] == 'publish':
+if sys.argv[-1] == 'build':
     os.system('python setup.py sdist bdist_wheel')
-    #os.system('python setup.py sdist bdist_wheel upload -r pypitest')
+    sys.exit(0)
+
+if sys.argv[-1] == 'publish':
+    os.system('python setup.py sdist bdist_wheel upload -r pypi')
+    sys.exit(0)
+
+if sys.argv[-1] == 'publish-test':
+    os.system('python setup.py sdist bdist_wheel upload -r pypitest')
     sys.exit(0)
 
 setup(

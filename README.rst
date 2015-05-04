@@ -32,8 +32,9 @@ Example
     # If you need to disable certificate verification, set verify_ssl to False.
     # tf = threadfix.ThreadFixAPI(host, api_key, verify_ssl=False)
 
-    # You can also specify a local cert to use as client side certificate, as a single file (containing the private key
-    # and the certificate) or as a tuple of both file’s path.
+    # You can also specify a local cert to use as client side certificate, as a
+    # single file (containing the private key and the certificate) or as a tuple
+    # of both file's path.
     # cert=('/path/server.crt', '/path/key')
     # tf = threadfix.ThreadFixAPI(host, api_key, cert=cert)
 
