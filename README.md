@@ -50,9 +50,17 @@ else:
   print(teams.message)
 ```
 
+If you are using a **self-signed certificate**, you can disable certificate verification when you instantiate the API wrapper. If disabled, API requests could be intercepted by third-parties -- use with caution.
+
+```python
+from threadfix_api import threadfix
+
+tf = threadfix.ThreadFixAPI(host, api_key, verify_ssl=False)
+```
+
 #### Teams
 
-##### List Teams
+##### List Teams: `list_teams`
 
 Retrieves all the teams.
 
@@ -67,7 +75,23 @@ tf = threadfix.ThreadFixAPI(host, api_key)
 response = tf.list_teams()
 ```
 
-##### Create Team
+##### Create Team: `create_team`
+
+Creates a team with the given name.
+
+###### Parameters
+
+| Parameter  | Required | Default | Description |
+| ---------- | -------- | ------- | ----------- |
+| name       | **Yes**  | N/A     | The name of the new team that is being created. |
+
+###### Example 
+
+```python
+tf = threadfix.ThreadFixAPI(host, api_key)
+response = tf.create_team('Example Team')
+```
+
 ##### Get Team
 ##### Get Team By Name
 
