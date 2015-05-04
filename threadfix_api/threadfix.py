@@ -66,7 +66,7 @@ class ThreadFixAPI(object):
 
     def create_application(self, team_id, name, url=None):
         """
-        Creates an application under the given team with id of team id.
+        Creates an application under a given team.
         :param team_id: Team identifier.
         :param name: The name of the new application that is being created.
         :param url: The url of where the application being assessed lives.

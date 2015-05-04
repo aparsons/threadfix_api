@@ -61,8 +61,8 @@ tf = threadfix.ThreadFixAPI(host, api_key, verify_ssl=False)
 #### Teams
 
 - [List Teams: `list_teams`](#list-teams-list_teams)
-- [Get Team: `get_team`](#)
-- [Get Team By Name: `get_team_by_name`](#)
+- [Get Team: `get_team`](##get-team-get_team)
+- [Get Team By Name: `get_team_by_name`](#get-team-by-name-get_team_by_name)
 
 ##### List Teams: `list_teams`
 
@@ -87,7 +87,7 @@ Creates a team with the given name.
 
 | Parameter  | Required | Default | Description | Values |
 | ---------- | -------- | ------- | ----------- | ------ |
-| name       | **Yes**  | N/A     | The name of the new team that is being created. | N/A |
+| name       | **Yes**  |         | The name of the new team that is being created. | N/A |
 
 ###### Example
 
@@ -104,32 +104,51 @@ response = tf.create_team('Example Team')
 - [Create Application: `create_application`](#create-application)
 - [](#)
 
-##### Create Application: ``
-##### Get Application: ``
-##### Get Application By Name: ``
-##### Set Application Parameters: ``
-##### Set Application URL: ``
-##### Set Application WAF: ``
+##### Create Application: `create_application`
+
+Creates an application under a given team.
+
+###### Parameters
+
+| Parameter  | Required | Default | Description | Values |
+| ---------- | -------- | ------- | ----------- | ------ |
+| team_id    | **Yes**  |         | Team identifier. |  |
+| name       | **Yes**  |         | The name of the new team that is being created. |  |
+| url        | No       |         | The url of where the application being assessed lives. |  |
+
+
+###### Example
+
+```python
+tf = threadfix.ThreadFixAPI(host, api_key)
+response = tf.create_application(team_id=1, name='Example Application', url='http://www.example.com/')
+```
+
+##### Get Application: `get_application`
+##### Get Application By Name: `get_application_by_name`
+##### Set Application Parameters: `set_application_parameters`
+##### Set Application URL: `set_application_url`
+##### Set Application WAF: `set_application_waf`
 
 #### Findings
 
-##### Create Manual Finding: ``
-##### Create Static Finding: ``
-##### Upload Scan: ``
+##### Create Manual Finding: `create_manual_finding`
+##### Create Static Finding: `create_static_finding`
+##### Upload Scan: `upload_scan`
 
 #### WAFs
 
-##### List WAFs: ``
-##### Create WAF: ``
-##### Get WAF: ``
-##### Get WAF By Name: ``
-##### Get WAF Rules: ``
-##### Get WAF Rules By Application: ``
-##### Upload WAF Log: ``
+##### List WAFs: `list_wafs`
+##### Create WAF: `create_waf`
+##### Get WAF: `get_waf`
+##### Get WAF By Name: `get_waf_by_name`
+##### Get WAF Rules: `get_waf_rules`
+##### Get WAF Rules By Application: `get_waf_rules_by_application`
+##### Upload WAF Log: `upload_waf_log`
 
 #### Vulnerabilities
 
-##### Get Vulnerabilities: ``
+##### Get Vulnerabilities: `get_vulnerabilities`
 
 ## Bugs and Feature Requests
 
