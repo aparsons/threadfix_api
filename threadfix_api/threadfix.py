@@ -329,8 +329,6 @@ class ThreadFixAPI(object):
         if show_hidden:
             params['showHidden'] = show_hidden
 
-        print(params)
-
         return self._request('POST', 'rest/vulnerabilities', params)
 
     # Utility
