@@ -15,7 +15,7 @@ class ThreadFixAPI(object):
         :param host: The URL for the ThreadFix server. (e.g., http://localhost:8080/threadfix/)
         :param api_key: The API key generated on the ThreadFix API Key page.
         :param verify_ssl: Specify if API requests will verify the host's SSL certificate, defaults to true.
-        :param timeout: HTTP timeout in seconds, default is 25.
+        :param timeout: HTTP timeout in seconds, default is 30.
         :param user_agent: HTTP user agent string, default is "threadfix_api/[version]".
         :param cert: You can also specify a local cert to use as client side certificate, as a single file (containing
         the private key and the certificate) or as a tuple of both file’s path
